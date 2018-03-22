@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'grombll_home#grombll_home'
+  get 'user_grumbles' => 'grombll_home#user_grumbles'
   devise_for :users
   resources :admins
   resources :agencies
@@ -16,7 +17,9 @@ Rails.application.routes.draw do
   resources :categories do
   member do
       get 'newcatlevel1'
-      get 'grumble_now'   
+      get 'grumble_now'
+      get 'unknown_company'
+   
   end
 end
 
@@ -32,12 +35,7 @@ resources :catlevel2s do
   end
 end
 
-resources :companies do
-  member do
-      get 'unknown_company'
-
-  end
-end
+#post 'unknown_create' => "grumbles#unknown_create"
 
 resources :grumbles do
   member do
@@ -45,6 +43,7 @@ resources :grumbles do
       get 'comment'
       get 'download_file'
       patch 'assign_update'
+
   end
 end
 resources :comments do
@@ -81,7 +80,8 @@ resources :catlevel1s do
  end
  
  resources :companies do
-  resources :grumbles  
+  resources :grumbles    
+      
  end
  resources :grumblers do
   resources :grumbles 

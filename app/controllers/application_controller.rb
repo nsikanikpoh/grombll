@@ -21,5 +21,8 @@ class ApplicationController < ActionController::Base
   	@grumbles = Grumble.all
   	@grumblers = Grumbler.all
   	@companies = Company.all
+    if current_user.grumbler? || current_user.company?
+    @grumbles1 = current_user.grumbles
+    end
   end
 end

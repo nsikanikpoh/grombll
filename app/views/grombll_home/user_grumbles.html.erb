@@ -1,12 +1,12 @@
-<% provide( :title, "Gromblls Index") %>
+<% provide( :title, "My Gromblls") %>
 
-<%if current_user.admin?%>
+
 <div class="row">
   <div class="col-md-12">
   <div class="x_panel" style="">
       <div class="x_title">
 
-<h1>Gromblls INDEX</h1>
+<h1>My Gromblls</h1>
 
 </div>
 <br>
@@ -22,7 +22,7 @@
     
       <th>Category</th>
     
-      <th>Grumbler</th>
+     
      
       <th>Company</th>
       <th colspan="3"></th>
@@ -39,12 +39,12 @@
         <td><%= grumble.category.name %></td>
       
        
-        <td><%= grumble.grumbler.first_name %>  <%= grumble.grumbler.last_name %></td>
+       
        
         <td><%= grumble.company.first_name%></td>
         <td><%= link_to 'Show', grumble, class:"btn btn-success btn-xs" %></td>
-        <td><%= link_to 'Edit', edit_grumble_path(grumble), class:"btn btn-success btn-xs"%></td>
-        <td><%= link_to 'Destroy', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_grumble_path(grumble), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Delete', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -60,7 +60,4 @@
 <%end%>
 
 
- <%else%>
-    <h2>Unauthorized access!</h2>
-    <p>You are not authorized to view this page.</p>
-  <%end%>
+ 

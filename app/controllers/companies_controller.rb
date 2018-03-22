@@ -4,25 +4,12 @@ class CompaniesController < ApplicationController
   # GET /companys
   # GET /companys.json
   def index
-    @companies = Company.all
+    @companies = Company.all.paginate(page: params[:page], per_page: 50).order(created_at: :desc, id: :desc)
   end
 
   # GET /companys/1
   # GET /companys/1.json
   def show
-  end
-
-
-  def unknown_company
-    index
-    @companies.each do |company|
-
-        if company.first_name == "Base Company"
-
-          @company = company
-        end
-    end
-    return @company
   end
   
 

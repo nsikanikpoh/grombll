@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:grumble_now, :newcatlevel1, :show, :edit, :update, :destroy]
+  before_action :set_category, only: [:unknown_company, :grumble_now, :newcatlevel1, :show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
@@ -10,8 +10,23 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @companies = @category.companies.paginate(page: params[:page], per_page: 20).order(created_at: :desc, id: :desc)
   end
 
+   def unknown_company
+    @categorytemp = []
+    (@categorytemp ||= []).push(@category)
+    @companies = Company.all
+    @companies.each do |company|
+
+        if company.first_name == "Base Company"
+
+          @company = company
+        end
+    end
+    return @company
+  end
+  
   def grumble_now
   end
 

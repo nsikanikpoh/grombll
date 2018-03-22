@@ -42,6 +42,7 @@ class GrumblesController < ApplicationController
 
   # GET /grumbles/new
   def new
+
     @company =  Company.find(params[:company_id])
     @grumble = @company.grumbles.new
   end
@@ -52,10 +53,17 @@ class GrumblesController < ApplicationController
 
   # POST /grumbles
   # POST /grumbles.json
+  
+  
+
+
   def create
     @company =  Company.find(params[:company_id])
     @grumble = @company.grumbles.create(grumble_params)
-    @grumble.category_id = @company.category.id
+    if @grumble.category_id?
+    else
+      @grumble.category_id = @company.category.id
+    end
     @grumble.grumbler_id = current_user.id
     @grumble.status = 0
     @grumble.save

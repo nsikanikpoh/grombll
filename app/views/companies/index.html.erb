@@ -41,7 +41,7 @@
         <td><%= company.category.name %></td>
         <td><%= company.sublevel.name %></td>
 
-        <td><%= link_to 'Show', company , class:"btn btn-success"%></td>
+        <td><%= link_to 'Show', company , class:"btn btn-info btn-xs"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -50,7 +50,7 @@
 <br>
   <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
 
-
+<%= will_paginate @companies, :renderer => BootstrapPagination::Rails %>
 <%else%>
 
 <p style="color:red;">No Companies Registered Yet!</p>

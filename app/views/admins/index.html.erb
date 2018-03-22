@@ -1,6 +1,7 @@
 <% provide( :title, "Admins Index") %>
 
-
+<%if current_user.admin?%>
+ 
 <div class="row">
   <div class="col-md-12">
   <div class="x_panel" style="">
@@ -51,3 +52,8 @@
 
 <p style="color:red;">No admin Registered Yet!</p>
 <%end%>
+
+<%else%>
+<h2>Unauthorized access!</h2>
+    <p>You are not authorized to view this page.</p>
+  <%end%>

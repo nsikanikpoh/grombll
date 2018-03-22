@@ -15,6 +15,14 @@
       <div class="x_content">
         <br />
         <form class="form-horizontal form-label-left input_mask">
+
+ <div class="form-group">
+    <%= form.label :category_id, "Category" %>
+
+  <%= form.select :category_id,  @categorytemp.map{|client|[(client.name), client.id]}, id: "index_of_the_client_id_select_box"%>
+  </div>
+
+
 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
             
      <%= form.text_field :company_name, id: :grumble_company_name,  class:"form-control has-feedback-left", placeholder:"Company Name", type:"text", required:"required" %>

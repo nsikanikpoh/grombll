@@ -1,8 +1,12 @@
   <% provide( :title, "Admin Sign Up") %>
 <p class="notice"><%= notice %></p>
 
-
+<%if current_user.admin?%>
+ 
 
 <%= render 'form'%>
 
-
+<%else%>
+<h2>Unauthorized access!</h2>
+    <p>You are not authorized to view this page.</p>
+  <%end%>
