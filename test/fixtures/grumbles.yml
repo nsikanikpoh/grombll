@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file: MyString
+  status: 1
+  company_name: MyString
+  complain: MyText
+  category_id: 1
+  catlevel1_id: 1
+  catlevel2_id: 1
+  catlevel3_id: 1
+  city: MyString
+  state: MyString
+  date: 2018-03-06
+  grumbler_id: 1
+  agency_id: 1
+  company_id: 1
+
+two:
+  file: MyString
+  status: 1
+  company_name: MyString
+  complain: MyText
+  category_id: 1
+  catlevel1_id: 1
+  catlevel2_id: 1
+  catlevel3_id: 1
+  city: MyString
+  state: MyString
+  date: 2018-03-06
+  grumbler_id: 1
+  agency_id: 1
+  company_id: 1

@@ -1,0 +1,21 @@
+<% provide( :title, @company.first_name) %>
+
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1>Grumbling to an Unregistered Company</h1>
+
+</div>
+<br>
+<br>
+<br>
+
+
+ <%= render "grumbles/unknownform"%>
+
+
+
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>

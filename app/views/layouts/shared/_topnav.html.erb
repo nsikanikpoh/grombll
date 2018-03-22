@@ -1,0 +1,54 @@
+<div class="nav toggle">
+  <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+</div>
+
+<ul class="nav navbar-nav navbar-right">
+  <li class="">
+
+    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+<%if current_user.admin?%>
+   Admin's <em>Account</em>
+<%elsif current_user.company?%>
+   Company <em>Account</em>
+<%elsif current_user.agency?%>
+
+ Agency <em>Account</em>
+
+<%elsif current_user.grumbler?%>
+
+ My Grombbl <em>Account</em>
+<%end%>
+
+    
+      <img src="images/img.jpg" alt=""><%=current_user.first_name%>
+      <span class=" fa fa-angle-down"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-usermenu pull-right">
+      <li><%= link_to 'Profile', user_path(current_user) %></li>
+      <li>
+    
+          
+          <span><%= link_to "Account Settings", edit_user_registration_path(current_user)%></span>
+       
+      </li>
+
+
+
+      <li><a href="">Help</a></li>
+      <li>
+      
+
+        <%= link_to destroy_user_session_path, method: :delete do%> 
+    Logout
+    <span data-toggle="tooltip" data-placement="top" title="Logout" class="glyphicon glyphicon-off" aria-hidden="true"></span>
+ 
+<%end%>
+      </li>
+    </ul>
+  </li>
+
+  
+    </ul>
+  </li>
+</ul>
+

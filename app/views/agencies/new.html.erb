@@ -1,0 +1,28 @@
+<% provide( :title, "New Agency") %>
+
+
+
+<%if current_user.admin?%>
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1>New Agency for <%=@category.name%></h1>
+<small>this page is available to admins only</small>
+</div>
+<br>
+<br>
+<br>
+
+<%= render 'form'%>
+<br/>
+<br/>
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
+</div>
+</div>
+</div>
+ <%else%>
+    <h2>Unauthorized access!</h2>
+    <p>You are not authorized to view this page.</p>
+  <%end%>

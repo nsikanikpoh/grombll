@@ -1,0 +1,139 @@
+
+
+<% provide( :title, @company.first_name) %>
+
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1><%=@company.first_name%></h1>
+
+</div>
+<br>
+<br>
+<br>
+ <div class="row profile">
+    <div class="col-md-4">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->    
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+          <div class="profile-userpic">
+        <%= image_tag(@company.avarta_url) if @company.avarta? %>
+
+        </div>
+           <%= @company.first_name.capitalize %> 
+          </div>
+          <div class="profile-usertitle-job">
+           <%= @company.type %>
+
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <center><button type="button" class="btn btn-success btn-sm">Grombll</button></center>
+          
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+          <ul class="nav">
+            <li class="active">
+
+             <%if @company.grumbles.any?%>
+             <p class="lead">Company Grumbles</p>
+              <p><%= pluralize @company.grumbles.size,'Grumbles' %> so far</p>
+             <table class="table table-striped table-bordered">
+
+  <thead>
+    <tr>
+   
+      <th>Status</th>
+    
+     
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+             <%@company.grumbles.each do |grumble| %>
+
+               <tr>
+<td><%= grumble.status%></td>
+               
+        <td><%= link_to grumble do%> <i class="fa fa-info"></i>view grumble <%end%></td>
+              
+
+
+              <%end%>
+              </tr>
+</tbody>
+</table>
+              <%else%>
+              <i class="fa fa-info"></i>no grumble for this grumbler yet
+              <%end%>
+            </li>
+            
+
+
+
+          </ul>
+        </div>
+        <!-- END MENU -->
+      </div>
+    </div>
+    <div class="col-md-8">
+            <div class="profile-content">
+         <p>
+
+
+
+<p>
+  <strong>Phone:</strong>
+  <%= @company.phone %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @company.email %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @company.address %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @company.info %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @company.category.name %>
+</p>
+
+<p>
+  <strong>Category Sub Level:</strong>
+  <%= @company.sublevel.name %>
+</p>
+
+
+
+<p>
+  <strong>City:</strong>
+  <%= @company.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @company.state %>
+</p>
+
+
+<%= link_to 'Companies Repo', companies_path, class:"btn btn-info" %>
+
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>

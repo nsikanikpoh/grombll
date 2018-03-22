@@ -1,0 +1,47 @@
+<% provide( :title, "Grumbler Index") %>
+
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1>Grumbler INDEX</h1>
+
+</div>
+<br>
+<br>
+<br>
+<% if @grumblers.any? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>grumbler Name</th>
+
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grumblers.each do |company| %>
+      <tr>
+        <td><%= company.first_name %> <%= company.last_name %>
+        </td>
+       
+
+        
+
+        <td><%= link_to 'view', company , class:"btn btn-success"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
+
+
+<%else%>
+
+<p style="color:red;">No grumblers Registered Yet!</p>
+<%end%>

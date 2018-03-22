@@ -1,0 +1,16 @@
+<%if current_user.company?%>
+    <%= render partial: 'layouts/shared/company' %>
+
+<%elsif current_user.admin?%>
+
+<%= render partial: 'layouts/shared/admin' %>
+
+<%elsif current_user.agency?%>
+
+<%= render partial: 'layouts/shared/agency' %>
+
+<%elsif current_user.grumbler?%>
+
+<%= render partial: 'layouts/shared/grumbler' %>
+
+<%end%>

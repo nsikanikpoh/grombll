@@ -1,0 +1,512 @@
+
+<% provide( :title, "Dashboard") %>
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+<h3>
+  
+  Admin Dashboard
+</h3>
+</div>
+
+
+ <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><i class="fa fa-bars"></i>Home Pane <small>way Checkins</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+          
+          
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+          <ul id="myTab1" class="nav nav-tabs bar_tabs right" role="tablist">
+            <li role="presentation" class="active"><a href="#tab_content11" id="home-tabb" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Companies</a>
+            </li>
+            <li role="presentation" class=""><a href="#tab_content22" role="tab" id="profile-tabb" data-toggle="tab" aria-controls="profile" aria-expanded="false">Categories</a>
+            </li>
+            <li role="presentation" class=""><a href="#tab_content33" role="tab" id="profile-tabb3" data-toggle="tab" aria-controls="profile" aria-expanded="false">Grumbles</a>
+            </li> 
+          </ul>
+          <div id="myTabContent2" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="tab_content11" aria-labelledby="home-tab">            
+              <p class="lead">
+<% if @companies.any? %>
+
+<p class="lead">Companies</p>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Company Name</th>
+     
+   
+      <th>Category</th>
+      <th>Category Sublevel</th>
+  
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.first_name %>
+
+        <% if company.first_name == "Base Company"%>
+
+          <p style="color:red;">all grumbles to unregistered companies in this system reside here</p>
+        <%end%>
+        </td>
+       
+
+        <td><%= company.category.name %></td>
+        <td><%= company.sublevel.name %></td>
+
+        <td><%= link_to 'Show', company , class:"btn btn-success"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= will_paginate @companies, :renderer => BootstrapPagination::Rails %>
+<%else%>
+
+<p style="color:red;">No Companies Registered Yet!</p>
+<%end%>
+
+
+ </p>
+
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="tab_content22" aria-labelledby="profile-tab">
+  <% if @categories.any? %>
+            
+              <p class="lead">Categories
+
+</p>
+
+
+
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Category Name</th>
+     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |zone| %>
+      <tr>
+        <td><%= zone.name %></td>
+       
+        <td><%= link_to 'Goto Category', zone, class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_category_path(zone), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', zone, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @categories, :renderer => BootstrapPagination::Rails %>
+ <%else%>
+ No Categories Entered Yet
+
+</div>
+</div>
+</div>
+
+ <%end%>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="tab_content33" aria-labelledby="profile-tab">
+
+  <% if @grumbles.any? %>      
+
+<p class="lead">Grumbles</p>
+
+
+<table class="table table-striped table-bordered">
+
+  <thead>
+    <tr>
+   
+      <th>Status</th>
+    
+      <th>Category</th>
+     
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grumbles.each do |grumble| %>
+      <tr>
+       
+        <td><%= grumble.status %></td>
+      
+       
+        <td><%= grumble.category.name %></td>
+
+
+<%if grumble.company.first_name == "Base Company"%>
+
+<td><%=grumble.company_name%><p style="color:orange;">Unregistered Company</p></td>
+
+
+<%else%>
+
+  <td><%=grumble.company.first_name%></td>
+      
+
+<%end%>
+
+
+ <td><%= link_to 'Show', grumble, class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_grumble_path(grumble), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @grumbles, :renderer => BootstrapPagination::Rails %>
+ <%else%>
+
+
+
+<p style="color:red;">No Gromblls Entered Yet!</p>
+<%end%>
+
+
+            </div>
+          </div>
+        </div>
+
+<div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+    
+        <!-- start accordion -->
+        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+ <div class="panel">
+            <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <h4 class="panel-title">Grumbles to Unregistered Companies </h4>
+
+            </a>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+                
+               
+
+
+
+  <% if @company.grumbles.any? %>
+  <p class="lead" style="color:orange;">Unassociated grumbles</p>
+<p class="lead">Grumbles</p>
+
+
+<table class="table table-striped table-bordered">
+
+  <thead>
+    <tr>
+   
+      <th>Status</th>
+    
+      <th>Category</th>
+     
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company.grumbles.each do |grumble| %>
+      <tr>
+       
+        <td><%= grumble.status %></td>
+      
+       
+        <td><%= grumble.category.name %></td>
+
+
+<%if grumble.company.first_name == "Base Company"%>
+
+<td><%=grumble.company_name%><p style="color:orange;">Unregistered Company</p></td>
+
+
+<%else%>
+
+  <td><%=grumble.company.first_name%></td>
+      
+
+<%end%>
+
+
+ <td><%= link_to 'Show', grumble, class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_grumble_path(grumble), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+ <%else%>
+
+
+
+<p style="color:red;">No Gromblls Entered Yet!</p>
+<%end%>
+
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <h4 class="panel-title">Miscellenious Activities</h4>
+            </a>
+
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+               
+<p class="lead">Miscellenious Tab</p>
+
+</p>
+
+              </div>
+            </div>
+          </div>
+         
+        </div>
+        <!-- end of accordion -->
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><i class="fa fa-bars"></i>Inner Admin view Panel <small> inner models</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+         
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <div class="col-xs-9">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="home-r">
+              <p class="lead">Agencies Tab</p>
+              <p>
+             <% if @agencies.any? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Agency Name</th>
+     
+   
+      <th>Category</th>
+     
+  
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @agencies.each do |agency| %>
+      <tr>
+        <td><%= agency.first_name %>
+
+       
+
+        <td><%= agency.category.name %></td>
+     
+
+        <td><%= link_to 'Show', agency , class:"btn btn-success"%></td>
+        <td><%= link_to 'Edit', edit_agency_path(agency), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', agency, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  
+<%= will_paginate @agencies, :renderer => BootstrapPagination::Rails %>
+
+<%else%>
+
+<p style="color:red;">No agencies Registered Yet!</p>
+<%end%></p>
+            </div>
+            <div class="tab-pane" id="profile-r">
+
+  <p class="lead"> Sublevel Category 1 Tab</p>
+
+ <% if @catlevel1s.any? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Sub Category Level 1 Name</th>
+     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catlevel1s.each do |zone| %>
+      <tr>
+        <td><%= zone.name %></td>
+       
+        <td><%= link_to 'Goto Sub Level', zone, class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_catlevel1_path(zone), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', zone, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @catlevel1s, :renderer => BootstrapPagination::Rails %>
+ <%else%>
+ No Sub Categories Entered Yet
+
+</div>
+</div>
+</div>
+
+ <%end%>
+</div>
+            <div class="tab-pane" id="messages-r">
+            <p class="lead">Sublevel category 2 Tab</p> 
+            
+  <% if @catlevel2s.any? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Sub Category Level 2 Name</th>
+     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catlevel2s.each do |zone| %>
+      <tr>
+        <td><%= zone.name %></td>
+       
+        <td><%= link_to 'Goto Sub Level', zone, class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_catlevel2_path(zone), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', zone, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @catlevel2s, :renderer => BootstrapPagination::Rails %>
+ <%else%>
+ No Sub Category Entered Yet
+
+</div>
+</div>
+</div>
+
+ <%end%>
+ </div>
+            <div class="tab-pane" id="settings-r"><p class="lead">Sublevel Category 3 Tab</p>
+
+                 <% if @catlevel3s.any? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Sub Category Level 2 Name</th>
+     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catlevel3s.each do |zone| %>
+      <tr>
+        <td><%= zone.name %></td>
+       
+        <td><%= link_to 'Goto Sub Level', zone, class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_catlevel3_path(zone), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', zone, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @catlevel3s, :renderer => BootstrapPagination::Rails %>
+ <%else%>
+ No Sub Category Entered Yet
+
+</div>
+</div>
+</div>
+
+ <%end%>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-3">
+          <!-- required for floating -->
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs tabs-right">
+            <li class="active"><a href="#home-r" data-toggle="tab">Agencies</a>
+            </li>
+            <li><a href="#profile-r" data-toggle="tab">Sublevel Category 1</a>
+            </li>
+            <li><a href="#messages-r" data-toggle="tab">Sublevel Category 2</a>
+            </li>
+            <li><a href="#settings-r" data-toggle="tab">Sublevel Category 3</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+
+</div>
+</div>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+    <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>

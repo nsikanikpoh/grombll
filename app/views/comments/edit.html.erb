@@ -1,0 +1,90 @@
+
+
+ <div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+<h1>
+  
+  <h1>Editing Comment</h1>
+</h1>
+
+</div>
+<br>
+<br>
+<br>
+
+<%= form_for([@comment]) do |form| %>
+  
+<div class="row">
+  <div class="col-md-9 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Comment Edit Form <small>service complain </small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          
+          
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+        <form class="form-horizontal form-label-left input_mask">
+<div class="col-md-6 col-sm-12  form-group has-feedback">
+            
+     <%= form.text_area :body, id: :comment_body,  class:"form-control has-feedback-left", placeholder:"please type your comment", type:"text", required:"required", rows:15%>
+    
+    
+  <span class="fa fa-edit form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+
+
+ <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+<%if @comment.attachment? %>
+<p>
+
+<%= link_to "get previous file", download_file_comment_path(@comment), data: "case_file", class:'btn-info btn-xs' %>
+ </p>
+
+<%else%>
+<p style="color:orange">no file attached previously</p>
+
+
+
+<%end%>
+             <%= form.label :attachment, "Attach document if any..?   Allowed Formats : pdf, doc, html, docx, jpg, jpeg, gif, png, txt, mp3, xls, xlsx, txt, ppt" %>
+     <%= form.file_field :attachment, autofocus: true do %>
+    <i class="fa fa-paperclip file-browser"></i>
+
+  <%= form.hidden_field :attachment_cache %>
+   <% end %>
+   <p>
+    <label>
+      <%= form.check_box :remove_attachment %>
+      Remove file..?
+    </label>
+    </p>
+          </div>
+    
+  
+
+          
+          <div class="form-group">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+               <%= form.submit "Submit", class:"btn btn-info"%> <br/><br/>
+ 
+ <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
+<% end %>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+

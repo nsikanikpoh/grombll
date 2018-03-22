@@ -1,0 +1,24 @@
+<html>
+	<head>
+	<title="Login|3DPetroMan">
+	<%=stylesheet_link_tag "logincss"%>
+	
+	</head>
+	<body>
+	<div class="container">
+
+    <div class="wrapper">
+<center><p><img src="../assets/img/logo.png"/></p>
+<h5>Grombll</h5>
+</center>
+        <div>
+ <% flash.each do |message_type, message| %>
+		<div class="alert alert-success" role="alert"><%= message %></div>
+	<% end %>
+	<%=yield%>
+	</div>
+	</div>
+	</div>
+	</body>
+<html>
+

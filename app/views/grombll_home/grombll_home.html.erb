@@ -1,0 +1,16 @@
+<%if current_user.company?%>
+    <%= render partial: 'company' %>
+
+<%elsif current_user.admin?%>
+
+<%= render partial: 'admin' %>
+
+<%elsif current_user.agency?%>
+
+<%= render partial: 'agency' %>
+
+<%elsif current_user.grumbler?%>
+
+<%= render partial: 'grumbler' %>
+
+<%end%>

@@ -1,0 +1,25 @@
+<% provide( :title, "New Grumble") %>
+
+
+
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1>New Grumble for <%=@company.first_name%></h1>
+<small>this page is available to admins only</small>
+</div>
+<br>
+<br>
+<br>
+
+<%= render 'form'%>
+<br/>
+<br/>
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
+</div>
+</div>
+</div>
+

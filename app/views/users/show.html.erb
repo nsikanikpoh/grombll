@@ -1,0 +1,116 @@
+<% provide( :title, @user.first_name+" "+@user.last_name) %>
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+<h1>
+  
+    <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+    
+ 
+</h1>
+</div>
+
+
+
+
+ <div class="row profile">
+    <div class="col-md-4">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+          <div class="profile-userpic">
+        <%= image_tag(@user.avarta_url) if @user.avarta? %>
+
+        </div>
+           <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+          </div>
+          <div class="profile-usertitle-job">
+           <%= @user.type %>
+
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <center><button type="button" class="btn btn-success btn-sm">Grombll</button></center>
+          
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+          <ul class="nav">
+            <li class="active">
+             
+              <%= link_to edit_user_registration_path(current_user) do%> <i class="fa fa-user"></i>Account Settings<%end%>
+            </li>
+            
+
+          </ul>
+        </div>
+        <!-- END MENU -->
+      </div>
+    </div>
+    <div class="col-md-8">
+            <div class="profile-content">
+         <p>
+
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @user.title %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @user.sex %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+
+<p>
+  <strong>City:</strong>
+  <%= @user.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @user.state %>
+</p>
+
+
+
+
+
+
+<%= link_to 'Edit', edit_user_path(@user), class:"btn btn-success" %> |
+
+<%= link_to 'Dashboard', root_url, class:"btn btn-info" %>
+<%= link_to "Back", :back, class:"btn btn-warning"%>
+
+</div>
+</div>
+</div>

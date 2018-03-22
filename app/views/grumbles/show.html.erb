@@ -1,0 +1,156 @@
+<% provide( :title, @grumble.complain) %>
+
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1>Grumble By:  <%= @grumble.grumbler.first_name%> <%= @grumble.grumbler.last_name%> </h1>
+<p class="lead" style="color:orange;">more files to upload..? you can still do this in the comments section</p>
+</div>
+<br>
+<br>
+<br>
+<%if @grumble.file? %>
+<p>
+  <strong> Grumble File:</strong>
+  
+
+
+<%= link_to "get file", download_file_grumble_path(@grumble), data: "case_file", class:'btn-info btn-xs' %>
+ </p>
+
+<%else%>
+<p style="color:orange">No file Attached</p>
+
+
+
+<%end%>
+<p>
+  <strong>Status:</strong>
+  <%= @grumble.status %>
+</p>
+<%if @grumble.company_name%>
+<p>
+  <strong>Company Name:</strong>
+  <%= @grumble.company_name %>
+</p>
+<%end%>
+
+<%if @grumble.company.first_name == "Base Company"%>
+
+<p style="color:orange;">Unknown Company</p>
+<P style="color:green;">Our team gets  to contact this company and foreward this complain within 24 hrs</P>
+<%if current_user.admin?%>
+
+<%= link_to 'Assign Company', assign_company_grumble_path(@grumble), class: "btn btn-warning btn-xs" %> |
+
+
+<%end%>
+<%else%>
+<P style="color:green;">This Grumble gets linked this company within 24 hours of posting.</P>
+<p>
+  <strong>Company:</strong>
+  <%= @grumble.company.first_name %>
+</p>
+<%end%>
+<p>
+  <strong>Complain:</strong>
+  <%= @grumble.complain %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @grumble.category.name %>
+</p>
+
+<p>
+  <strong>Category Sublevel:</strong>
+  <%= @grumble.company.sublevel.name%>
+</p>
+
+<p>
+  <strong>Grumbler:</strong>
+  <%= @grumble.grumbler.first_name%> <%= @grumble.grumbler.last_name%> <%= link_to "View Profile", grumbler_path(@grumble.grumbler), class: "btn btn-success btn-xs"%>
+</p>
+
+
+<p>
+  <strong>City:</strong>
+  <%= @grumble.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @grumble.state %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @grumble.date %>
+</p>
+
+
+
+<div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+    
+
+   <!-- start accordion -->
+        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+ <div class="panel">
+            <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <h4 class="panel-title" style="color:orange;">View Grumble Comments </h4>
+
+            </a>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+                
+               
+
+<% if @grumble.comments.any? %>
+<p class="lead">Posted Comments</p>
+<%= pluralize @grumble.comments.size,'Comment' %> so far
+<% else %>
+Be the first to post discussion
+<% end %>
+<%= render :partial =>'comments/comment',
+:collection => @grumble.comments  %>
+
+<br/>
+<br/>
+<br/>
+ <div class="x_panel" style="">
+      <div class="x_title">
+<h3>Post new comment</h3>
+</div>
+ <%= render 'comments/form' %>
+</div>
+</div>
+</div>
+  </div>
+           
+              </div>
+            </div>
+          </div>
+
+     <%= link_to 'Edit', edit_grumble_path(@grumble), class: "btn btn-success" %> |
+
+
+<%= link_to 'Back', grumbles_path, class: "btn btn-primary" %>
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> |
+ <%= link_to 'Grumble Comments', comment_grumble_path(@grumble), class:"btn btn-success" %> 
+  |
+   <%= link_to "Back", :back, class:"btn btn-warning"%>   
+
+
+    </div>
+    </div>
+  </div>
+
+
+

@@ -1,0 +1,46 @@
+<%= form_for([@catlevel1, @catlevel1.catlevel2s.build]) do |form| %>
+  
+  
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Category Sub Level 2 Form <small>category sub level division </small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+         
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+        <form class="form-horizontal form-label-left input_mask">
+
+
+           <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            
+     <%= form.text_field :name, id: :catlevel2_name,  class:"form-control has-feedback-left", placeholder:"Name", type:"text", required:"required"  %>
+    
+    
+  <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+           <%= form.text_area :info, id: :catlevel2_info, class:"form-control has-feedback-left", id:"inputSuccess2", placeholder:"Description", type:"text", required:"required", row: 10  %>
+           
+            <span class="fa fa-edit form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+               <%= form.submit "Submit", class:"btn btn-info"%>  <%= link_to 'Sub Level 1 Repo', catlevel1s_path, class:"btn btn-success", class:"btn btn-primary" %><br/><br/>
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> 
+ <%= link_to "Back", :back, class:"btn btn-warning"%>
+
+<% end %>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>

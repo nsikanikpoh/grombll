@@ -1,0 +1,161 @@
+<div class="navbar nav_title" style="border: 0;">
+  <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Grombll</span></a>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- menu profile quick info -->
+<div class="profile clearfix">
+  <div class="profile_pic">
+   <div class="profile-userpic">
+        <%= image_tag(current_user.avarta_url) if current_user.avarta? %>
+
+        </div>
+  </div>
+  <div class="profile_info">
+    <span>Welcome,</span>
+    <h2><%=current_user.first_name%> <%=current_user.last_name%></h2>
+  </div>
+</div>
+<!-- /menu profile quick info -->
+
+<br />
+
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  <div class="menu_section">
+    <h3>My Panel</h3>
+    <ul class="nav side-menu">
+      <li><a href="/"><i class="fa fa-home"></i> Home </a>
+      </li>
+       <li><a href="/categories"><i class="fa fa-clone"></i> Categories <span class="fa fa-chevron-down"></span></a>
+       <%if @categories.any?%>
+            <% @categories.each do |category| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to category.name, category %></li>
+       </ul>
+      </li>
+    <% end %>
+
+      <%end%>
+      
+
+
+
+         <li><a href="/catlevel1s"><i class="fa fa-clone"></i> Category Sub Level 1 <span class="fa fa-chevron-down"></span></a>
+       <%if @catlevel1s.any?%>
+            <% @catlevel1s.each do |category| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to category.name, category %></li>
+       </ul>
+      </li>
+    <% end %>
+
+     
+
+      <%end%>
+       <li><a href="/catlevel2s"><i class="fa fa-clone"></i> Category Sub Level 2 <span class="fa fa-chevron-down"></span></a>
+       <%if @catlevel2s.any?%>
+            <% @catlevel2s.each do |category| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to category.name, category %></li>
+       </ul>
+      </li>
+    <% end %>
+
+      <%end%>
+
+ 
+       <li><a href="/catlevel3s"><i class="fa fa-clone"></i> Category Sub Level 3 <span class="fa fa-chevron-down"></span></a>
+       <%if @catlevel3s.any?%>
+            <% @catlevel3s.each do |category| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to category.name, category %></li>
+       </ul>
+      </li>
+    <% end %>
+
+      <%end%>
+
+
+
+
+      <li><a href="/agencies"><i class="fa fa-clone"></i> Agencies <span class="fa fa-chevron-down"></span></a>
+       <%if @agencies.any?%>
+            <% @agencies.each do |category| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to category.first_name, category %></li>
+       </ul>
+      </li>
+    <% end %>
+
+      <%end%>
+
+      
+
+
+   
+
+       <li><a href="/grumbles"><i class="fa fa-edit"></i> Gromblls <span class="fa fa-chevron-down"></span></a>
+       <%if @grumbles.any?%>
+            <% @grumbles.each do |station| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to station.status, station %></li>
+       </ul>
+      </li>
+    <% end %>
+
+      <%end%>
+
+      
+       <li><a href="/grumblers"><i class="fa fa-sitemap"></i> Grumblers <span class="fa fa-chevron-down"></span></a>
+       <%if @grumblers.any?%>
+            <% @grumblers.each do |station| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to station.first_name, station %></li>
+       </ul>
+      </li>
+    <% end %>
+
+      <%end%>
+
+       <li><a href="/companies"><i class="fa fa-desktop"></i>Companies <span class="fa fa-chevron-down"></span></a>
+       <%if @companies.any?%>
+            <% @companies.each do |station| %>
+        <ul class="nav child_menu">        
+        <li><%= link_to station.first_name, station %></li>
+       </ul>
+      </li>
+    <% end %>
+
+      <%end%>
+
+   
+
+      
+   
+    </ul>
+  </div>
+
+</div>
+<!-- /sidebar menu -->
+
+<!-- /menu footer buttons -->
+<div class="sidebar-footer hidden-small">
+  <a data-toggle="tooltip" data-placement="top" title="Settings">
+    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+  </a>
+  <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+    <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+  </a>
+  <a data-toggle="tooltip" data-placement="top" title="Lock">
+    <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+  </a>
+  <%= link_to destroy_user_session_path, method: :delete do%> 
+  
+    <span data-toggle="tooltip" data-placement="top" title="Logout" class="glyphicon glyphicon-off" aria-hidden="true"></span>
+ 
+<%end%>
+</div>
+<!-- /menu footer buttons -->
+

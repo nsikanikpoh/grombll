@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  info: MyText
+  category: one
+  catlevel2: one
+  catlevel1_id: 1
+
+two:
+  name: MyString
+  info: MyText
+  category: two
+  catlevel2: two
+  catlevel1_id: 1

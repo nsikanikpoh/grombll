@@ -1,0 +1,56 @@
+<% provide( :title, " CatLevel3 Repository") %>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+<h1>
+  
+  Grombll Sub Category Level 3s
+</h1>
+
+</div>
+<br>
+<br>
+<br>
+
+  <% if @catlevel3s.any? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Sub Category Level 2 Name</th>
+     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catlevel3s.each do |zone| %>
+      <tr>
+        <td><%= zone.name %></td>
+       
+        <td><%= link_to 'Goto Sub Level', zone, class:"btn btn-success" %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ <%else%>
+ No Categories Entered Yet
+
+</div>
+</div>
+</div>
+
+ <%end%>
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
+
+ <%= will_paginate @catlevel3s, :renderer => BootstrapPagination::Rails %>
+ <%= link_to 'New Category', new_category_path, class:"btn btn-success"%>
+
+
+
+
+

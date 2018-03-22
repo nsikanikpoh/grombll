@@ -1,0 +1,97 @@
+<%= form_for([@company, @company.grumbles.build], html: { multipart: true }) do |form| %>
+  
+  
+<div class="row">
+  <div class="col-md-9 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Grumble Form <small>service complain </small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+         
+          
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+        <form class="form-horizontal form-label-left input_mask">
+<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            
+     <%= form.text_field :company_name, id: :grumble_company_name,  class:"form-control has-feedback-left", placeholder:"Company Name", type:"text", required:"required" %>
+    
+    
+  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+
+
+   
+
+<div class="col-md-9 col-sm-9 col-xs-12 form-group has-feedback">
+            
+    <%= form.label :state, "State" %>
+    
+    <%= form.select :state, ["Abia","Adamawa","Akwa Ibom","Anambra","Bauchi","Bayelsa","Benue","Borno","Cross River","Delta", "Ebonyi","Edo","Ekiti","Enugu","FCT","Gombe","Imo","Jigawa","Kaduna","Kano","Katsina","Kebbi","Kogi","Kwara","Lagos","Nassarawa","Niger","Ogun","Ondo","Osun","Oyo State","Plateau","River State","Sokoto","Taraba","Yobe","Zamfara"], prompt: "Select...",class:"form-control has-feedback-left"%>
+          </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            
+     <%= form.text_field :city, id: :grumble_city,  class:"form-control has-feedback-left", placeholder:"City", type:"text", required:"required", rows:15 %>
+    
+    
+  <span class="fa fa-flag form-control-feedback left" aria-hidden="true"></span>
+          </div>
+             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <%= form.label :date, "Date of Event" %>
+     <%= form.date_select :date, id: :grumble_date,  class:"form-control has-feedback-left", placeholder:"Date", type:"text", required:"required" %>
+    
+ 
+          </div>
+
+  
+
+
+
+           <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            
+     <%= form.text_area :complain, id: :grumble_complain,  class:"form-control has-feedback-left", placeholder:"Describe details of your complain", type:"text", required:"required", rows:10 %>
+    
+    
+  <span class="fa fa-edit form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+
+  
+        
+
+<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+             <%= form.label :file, "Attach document if any..?   Allowed Formats : pdf, doc, html, docx, jpg, jpeg, gif, png, txt, mp3, xls, xlsx, txt, ppt" %>
+     <%= form.file_field :file, autofocus: true do %>
+    <i class="fa fa-paperclip file-browser"></i>
+
+  <%= form.hidden_field :file_cache %>
+   <% end %>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+               <%= form.submit "Submit", class:"btn btn-info"%> <br/><br/>
+ 
+
+<% end %>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+

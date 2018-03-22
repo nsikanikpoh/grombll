@@ -1,0 +1,45 @@
+<% provide( :title, @catlevel2.name) %>
+
+
+<%if current_user.admin?%>
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+<h1>
+  
+  <%= @catlevel2.name %>
+</h1>
+<small>this page is available to admins only</small>
+</div>
+<br>
+<br>
+<br>
+
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @catlevel2.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @catlevel2.info %>
+</p>
+
+<%= link_to 'Edit', edit_catlevel1_path(@catlevel2), class:"btn btn-success" %> |
+<%= link_to 'Sub Category Level 2 Repo', catlevel2s_path, class:"btn btn-success", class:"btn btn-primary" %>|
+<%= link_to 'Add Category Sub Level 3', newcatlevel3_catlevel2_path(@catlevel2), class:"btn btn-success" %>
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
+
+<%= link_to 'Add Company', new_catlevel2_company_path(@catlevel2), class:"btn btn-info" %>
+
+  <%else%>
+    <h2>Unauthoried access!</h2>
+    <p>You are not authorised to view this page.</p>
+  <%end%>
+
+
+
+

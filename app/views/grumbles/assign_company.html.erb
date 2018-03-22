@@ -1,0 +1,76 @@
+<% provide( :title, @grumble.complain) %>
+
+<%if current_user.admin?%>
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1>Grumble By:  <%= @grumble.grumbler.first_name%> <%= @grumble.grumbler.last_name%> </h1>
+
+</div>
+<br>
+<br>
+<br>
+
+<p>
+  <strong>Status:</strong>
+  <%= @grumble.status %>
+</p>
+<br>
+<br>
+
+<%= form_for(@grumble,  url: assign_update_grumble_url(@grumble)) do |form| %>
+
+
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Grumble Edit Form <small>company assign </small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+         
+          
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+        <form class="form-horizontal form-label-left input_mask">
+<div class="col-md-9 col-sm-9 col-xs-12 form-group has-feedback">
+        
+            <%= form.label :company_id, "Please Select Company"%><br>
+  <%= form.collection_select :company_id, Company.all.order(:first_name),:id,:first_name,  class:"form-control", required:"required" %>
+
+          </div>
+
+          
+          <div class="form-group">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+               <%= form.submit "Update Grumble", class:"btn btn-info"%> <br/><br/>
+ 
+
+<% end %>
+</div>
+</div>
+</form>
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+<%= link_to 'Grumble INDEX', grumbles_path, class: "btn btn-primary" %>
+
+
+
+ <%else%>
+    <h2>Unauthorized access!</h2>
+    <p>You are not authorized to view this page.</p>
+  <%end%>
+
+  <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>

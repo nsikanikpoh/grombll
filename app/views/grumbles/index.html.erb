@@ -1,0 +1,66 @@
+<% provide( :title, "Gromblls Index") %>
+
+<%if current_user.admin?%>
+<div class="row">
+  <div class="col-md-12">
+  <div class="x_panel" style="">
+      <div class="x_title">
+
+<h1>Gromblls INDEX</h1>
+
+</div>
+<br>
+<br>
+<br>
+<% if @grumbles.any? %>
+<table class="table table-striped table-bordered">
+
+  <thead>
+    <tr>
+   
+      <th>Status</th>
+    
+      <th>Category</th>
+    
+      <th>Grumbler</th>
+     
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grumbles.each do |grumble| %>
+      <tr>
+       
+        <td><%= grumble.status %></td>
+      
+       
+        <td><%= grumble.category.name %></td>
+      
+       
+        <td><%= grumble.grumbler.first_name %>  <%= grumble.grumbler.last_name %></td>
+       
+        <td><%= grumble.company.first_name%></td>
+        <td><%= link_to 'Show', grumble %></td>
+        <td><%= link_to 'Edit', edit_grumble_path(grumble) %></td>
+        <td><%= link_to 'Destroy', grumble, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+ <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
+
+
+<%else%>
+
+<p style="color:red;">No Gromblls Entered Yet!</p>
+<%end%>
+
+
+ <%else%>
+    <h2>Unauthorized access!</h2>
+    <p>You are not authorized to view this page.</p>
+  <%end%>
