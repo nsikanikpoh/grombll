@@ -214,7 +214,7 @@
                
 
 
-
+<%if @company%>
   <% if @company.grumbles.any? %>
   <p class="lead" style="color:orange;">Unassociated grumbles</p>
 <p class="lead">Grumbles</p>
@@ -274,7 +274,7 @@
 <p style="color:red;">No Gromblls Entered Yet!</p>
 <%end%>
 
-
+<%end%>
 
               </div>
             </div>
