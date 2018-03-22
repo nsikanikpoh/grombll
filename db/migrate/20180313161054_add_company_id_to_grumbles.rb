@@ -1,5 +1,5 @@
 class AddCompanyIdToGrumbles < ActiveRecord::Migration[5.1]
   def change
-    add_reference :grumbles, :company, foreign_key: true
+    add_column :grumbles, :company_id, :integer
   end
 end
