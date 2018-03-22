@@ -28,73 +28,8 @@
     <ul class="nav side-menu">
       <li><a href="/"><i class="fa fa-home"></i> Home </a>
       </li>
-       <li><a href="/categories"><i class="fa fa-clone"></i> Categories <span class="fa fa-chevron-down"></span></a>
-       <%if @categories.any?%>
-            <% @categories.each do |category| %>
-        <ul class="nav child_menu">        
-        <li><%= link_to category.name, category %></li>
-       </ul>
-      </li>
-    <% end %>
-
-      <%end%>
       
-
-
-
-         <li><a href="/catlevel1s"><i class="fa fa-clone"></i> Category Sub Level 1 <span class="fa fa-chevron-down"></span></a>
-       <%if @catlevel1s.any?%>
-            <% @catlevel1s.each do |category| %>
-        <ul class="nav child_menu">        
-        <li><%= link_to category.name, category %></li>
-       </ul>
-      </li>
-    <% end %>
-
-     
-
-      <%end%>
-       <li><a href="/catlevel2s"><i class="fa fa-clone"></i> Category Sub Level 2 <span class="fa fa-chevron-down"></span></a>
-       <%if @catlevel2s.any?%>
-            <% @catlevel2s.each do |category| %>
-        <ul class="nav child_menu">        
-        <li><%= link_to category.name, category %></li>
-       </ul>
-      </li>
-    <% end %>
-
-      <%end%>
-
- 
-       <li><a href="/catlevel3s"><i class="fa fa-clone"></i> Category Sub Level 3 <span class="fa fa-chevron-down"></span></a>
-       <%if @catlevel3s.any?%>
-            <% @catlevel3s.each do |category| %>
-        <ul class="nav child_menu">        
-        <li><%= link_to category.name, category %></li>
-       </ul>
-      </li>
-    <% end %>
-
-      <%end%>
-
-
-
-
-      <li><a href="/agencies"><i class="fa fa-clone"></i> Agencies <span class="fa fa-chevron-down"></span></a>
-       <%if @agencies.any?%>
-            <% @agencies.each do |category| %>
-        <ul class="nav child_menu">        
-        <li><%= link_to category.first_name, category %></li>
-       </ul>
-      </li>
-    <% end %>
-
-      <%end%>
-
-      
-
-
-   
+  
 
        <li><a href="/grumbles"><i class="fa fa-edit"></i> Gromblls <span class="fa fa-chevron-down"></span></a>
        <%if @grumbles.any?%>
@@ -107,30 +42,8 @@
 
       <%end%>
 
-      
-       <li><a href="/grumblers"><i class="fa fa-sitemap"></i> Grumblers <span class="fa fa-chevron-down"></span></a>
-       <%if @grumblers.any?%>
-            <% @grumblers.each do |station| %>
-        <ul class="nav child_menu">        
-        <li><%= link_to station.first_name, station %></li>
-       </ul>
-      </li>
-    <% end %>
+     
 
-      <%end%>
-
-       <li><a href="/companies"><i class="fa fa-desktop"></i>Companies <span class="fa fa-chevron-down"></span></a>
-       <%if @companies.any?%>
-            <% @companies.each do |station| %>
-        <ul class="nav child_menu">        
-        <li><%= link_to station.first_name, station %></li>
-       </ul>
-      </li>
-    <% end %>
-
-      <%end%>
-
-   
 
       
    
