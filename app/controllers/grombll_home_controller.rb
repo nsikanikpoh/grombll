@@ -6,8 +6,11 @@ class GrombllHomeController < ApplicationController
   	@catlevel3s = Catlevel3.all.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
   	@agencies = Agency.all.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
   	@grumbles = Grumble.all.paginate(page: params[:page], per_page: 20).order(created_at: :desc, id: :desc)
-  	@grumbles1 = current_user.grumbles.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
- 
+  	if user_signed_in?
+          if current_user.grumbler? || current_user.company?
+              @grumbles1 = current_user.grumbles.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
+          end
+  end
     @grumblers = Grumbler.all.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
   	@companies = Company.all.paginate(page: params[:page], per_page: 20).order(created_at: :desc, id: :desc)
   

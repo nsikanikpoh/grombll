@@ -42,9 +42,9 @@
         <td><%= grumble.grumbler.first_name %>  <%= grumble.grumbler.last_name %></td>
        
         <td><%= grumble.company.first_name%></td>
-        <td><%= link_to 'Show', grumble, class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Show', grumble, class:"btn btn-info btn-xs" %></td>
         <td><%= link_to 'Edit', edit_grumble_path(grumble), class:"btn btn-success btn-xs"%></td>
-        <td><%= link_to 'Destroy', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-xs" %></td>
+        <td><%= link_to 'Delete', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -96,9 +96,9 @@
 <%end%>
 
 
- <td><%= link_to 'Show', grumble %></td>
-        <td><%= link_to 'Edit', edit_grumble_path(grumble) %></td>
-        <td><%= link_to 'Destroy', grumble, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ <td><%= link_to 'Show', grumble, class:"btn btn-info btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_grumble_path(grumble), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Delete', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -154,7 +154,7 @@
       <tr>
         <td><%= zone.name %></td>
        
-        <td><%= link_to 'Grumble on this Category', grumble_now_category_path(zone), class:"btn btn-success" %></td>
+        <td><%= link_to 'Grumble on this Category', grumble_now_category_path(zone), class:"btn btn-info btn-xs" %></td>
        
       </tr>
     <% end %>
