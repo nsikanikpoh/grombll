@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'grombll_home#grombll_home'
   get 'user_grumbles' => 'grombll_home#user_grumbles'
+  get 'agency_grumbles' => 'grombll_home#agency_grumbles'
   devise_for :users
   resources :admins
   resources :agencies

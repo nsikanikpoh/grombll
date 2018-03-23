@@ -10,6 +10,9 @@ class GrombllHomeController < ApplicationController
           if current_user.grumbler? || current_user.company?
               @grumbles1 = current_user.grumbles.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
           end
+          if current_user.agency?
+            @grumbles2 = current_user.category.grumbles
+        end
   end
     @grumblers = Grumbler.all.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
   	@companies = Company.all.paginate(page: params[:page], per_page: 20).order(created_at: :desc, id: :desc)
@@ -29,5 +32,8 @@ class GrombllHomeController < ApplicationController
 
   def user_grumbles
     @grumbles = current_user.grumbles.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
+  end
+  def agency_grumbles
+    @grumbles = current_user.category.grumbles.paginate(page: params[:page], per_page: 5).order(created_at: :desc, id: :desc)
   end
 end

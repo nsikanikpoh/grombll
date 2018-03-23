@@ -110,9 +110,9 @@
 
    
 
-       <li><a href="/grumbles"><i class="fa fa-edit"></i> Gromblls <span class="fa fa-chevron-down"></span></a>
-       <%if @grumbles.any?%>
-            <% @grumbles.each do |station| %>
+      <li><a href="/user_grumbles"><i class="fa fa-edit"></i> Gromblls <span class="fa fa-chevron-down"></span></a>
+       <%if @grumbles1.any?%>
+            <% @grumbles1.each do |station| %>
         <ul class="nav child_menu">        
         <li><%= link_to station.status, station %></li>
        </ul>
@@ -120,7 +120,6 @@
     <% end %>
 
       <%end%>
-
       
        <li><a href="/grumblers"><i class="fa fa-sitemap"></i> Grumblers <span class="fa fa-chevron-down"></span></a>
        <%if @grumblers.any?%>

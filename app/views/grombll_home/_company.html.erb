@@ -95,16 +95,15 @@
 <%end%>
 
 
- <td><%= link_to 'Show', grumble %></td>
-        <td><%= link_to 'Edit', edit_grumble_path(grumble) %></td>
-        <td><%= link_to 'Destroy', grumble, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ <td><%= link_to 'Show', grumble, class:"btn btn-info btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_grumble_path(grumble), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Delete', grumble, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
- <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
 
 
 <%else%>
@@ -127,7 +126,7 @@
 
  <div class="panel">
             <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              <h4 class="panel-title">Grumble Now </h4>
+              <h4 class="panel-title">Misc Pane</h4>
 
             </a>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
@@ -137,38 +136,9 @@
 
 
 
-  <% if @categories.any? %>
-  <p class="lead" style="color:orange;">Select Category</p>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Category Name</th>
-     
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |zone| %>
-      <tr>
-        <td><%= zone.name %></td>
-       
-        <td><%= link_to 'Select Category', grumble_now_category_path(zone), class:"btn btn-success" %></td>
-       
-      </tr>
-    <% end %>
-  </tbody>
-</table>
- <%= will_paginate @categories, :renderer => BootstrapPagination::Rails %>
- <%else%>
- No Categories Entered Yet
-
-</div>
-</div>
-</div>
-
- <%end%>
  
+  <p class="lead" style="color:orange;">Misc Pane</p>
+
 
 
 
@@ -199,6 +169,7 @@
       </div>
     </div>
   </div>
+ <%= link_to 'Dashboard', root_path, class:"btn btn-info" %> | <%= link_to "Back", :back, class:"btn btn-warning"%>
 
 
       </div>

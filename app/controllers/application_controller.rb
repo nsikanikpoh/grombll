@@ -25,6 +25,9 @@ class ApplicationController < ActionController::Base
         if current_user.grumbler? || current_user.company?
             @grumbles1 = current_user.grumbles
         end
+        if current_user.agency?
+            @grumbles2 = current_user.category.grumbles
+        end
      end
   end
 end
