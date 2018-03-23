@@ -28,6 +28,56 @@
   <%= @catlevel1.info %>
 </p>
 
+
+
+
+<% if @companies.any? %>
+<p class="lead" style="color:orange;">Companies Linked To this sub Category</p>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Company Name</th>
+     
+   <th>Category</th>
+     
+      <th>Area of Operation</th>
+  
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.first_name %>
+
+        <% if company.first_name == "Base Company"%>
+
+          <p style="color:red;">all grumbles to unregistered companies in this system reside here</p>
+        <%end%>
+        </td>
+       
+<td><%= company.category.name %></td>
+        
+        <td><%= company.sublevel.name %></td>
+
+        <td><%= link_to 'Show', company , class:"btn btn-info btn-xs"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  
+<%= will_paginate @companies, :renderer => BootstrapPagination::Rails %>
+<%else%>
+
+<p style="color:red;">No Companies Registered under this sub category Yet!</p>
+<%end%>
+
+
+
+
 <%= link_to 'Edit', edit_catlevel1_path(@catlevel1), class:"btn btn-success" %> |
 <%= link_to 'Sub Category Level 1 Repo', catlevel1s_path, class:"btn btn-success", class:"btn btn-primary" %>|
 <%= link_to 'Add Category Sub Level 2', newcatlevel2_catlevel1_path(@catlevel1), class:"btn btn-success" %>

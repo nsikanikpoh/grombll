@@ -11,6 +11,8 @@ class Catlevel1sController < ApplicationController
   # GET /catlevel1s/1
   # GET /catlevel1s/1.json
   def show
+       @companies = @catlevel1.companies.paginate(page: params[:page], per_page: 20).order(created_at: :desc, id: :desc)
+ 
   end
 
   def newcatlevel2

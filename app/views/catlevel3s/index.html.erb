@@ -20,7 +20,9 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Sub Category Level 2 Name</th>
+      <th>Sub Category Level 3 Name</th>
+      <th>Sub Category Level 2</th>
+      <th>Sub Category Level 1</th>
      <th>Category</th>
       <th colspan="3"></th>
     </tr>
@@ -30,6 +32,8 @@
     <% @catlevel3s.each do |zone| %>
       <tr>
         <td><%= zone.name %></td>
+         <td><%= zone.catlevel2.name %></td>
+         <td><%= zone.catlevel2.catlevel1.name %></td>
          <td><%= zone.category.name %></td>
        
         <td><%= link_to 'Goto Sub Level', zone, class:"btn btn-info btn-xs" %></td>
