@@ -72,7 +72,7 @@
 
 <p>
   <strong>Grumbler:</strong>
-  <%= @grumble.grumbler.first_name%> <%= @grumble.grumbler.last_name%> <%= link_to "View Profile", grumbler_path(@grumble.grumbler), class: "btn btn-success btn-xs"%>
+  <%= @grumble.grumbler.first_name%> <%= @grumble.grumbler.last_name%> <%= link_to "View Profile", grumbler_path(@grumble.grumbler), class: "btn btn-info btn-xs"%>
 </p>
 
 
@@ -104,7 +104,7 @@
 
  <div class="panel">
             <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              <h4 class="panel-title" style="color:orange;">View Grumble Comments </h4>
+              <h4 class="panel-title"><strong><em><small style="color:orange;"> <strong>Click to view</strong></small></em> Grumble Comments <i class="fa fa-edit"></i> </strong>  </h4>
 
             </a>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
@@ -130,11 +130,11 @@ Be the first to post discussion
 </div>
  <%= render 'comments/form' %>
 </div>
-</div>
-</div>
-  </div>
+
            
-             
+  <br/>
+<br/>
+<br/>           
 
      <%= link_to 'Edit', edit_grumble_path(@grumble), class: "btn btn-success" %> |
 
