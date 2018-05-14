@@ -6,7 +6,7 @@
   <li class="">
 
     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-<%if current_user.admin?%>
+<%if current_user%>
    Admin's <em>Account</em>
 <%elsif current_user.company?%>
    Company <em>Account</em>
@@ -20,7 +20,15 @@
 <%end%>
 
     
-      <img src="images/img.jpg" alt=""><%=current_user.first_name%>
+      
+    <%if current_user.avarta?%>
+        <%= image_tag(current_user.avarta_url) %>
+
+        <%else%>
+
+        <img src="../assets/fallback/default.png"/>
+        <%end%>
+<%=current_user.first_name%>
       <span class=" fa fa-angle-down"></span>
     </a>
     <ul class="dropdown-menu dropdown-usermenu pull-right">
