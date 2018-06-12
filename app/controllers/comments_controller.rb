@@ -26,7 +26,6 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-
     @grumble = Grumble.find(params[:grumble_id])
     @comment = @grumble.comments.create(comment_params)
     @comment.commenter_id = current_user.id

@@ -20,7 +20,6 @@ Rails.application.routes.draw do
       get 'newcatlevel1'
       get 'grumble_now'
       get 'unknown_company'
-   
   end
 end
 
@@ -44,14 +43,11 @@ resources :grumbles do
       get 'comment'
       get 'download_file'
       patch 'assign_update'
-
   end
 end
 resources :comments do
-  member do
-     
+  member do   
       get 'download_file'
-     
   end
 end
  resources :categories do
