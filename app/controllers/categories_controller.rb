@@ -13,20 +13,21 @@ class CategoriesController < ApplicationController
     @companies = @category.companies.paginate(page: params[:page], per_page: 20).order(created_at: :desc, id: :desc)
   end
 
-   def unknown_company
-    @categorytemp = []
-    (@categorytemp ||= []).push(@category)
-    @companies = Company.all
-    @companies.each do |company|
+  def unknown_company
+      @categorytemp = []
+      (@categorytemp ||= []).push(@category)
+      @companies = Company.all
+      @companies.each do |company|
 
         if company.first_name == "Base Company"
 
-          @company = company
+            @company = company
         end
     end
-    return @company
+      return @company
   end
   
+
   def grumble_now
   end
 
